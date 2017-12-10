@@ -36,10 +36,10 @@ class User extends React.Component {
   renderStat(stat) {
     return (
       <li key={stat.name} className="user-info__stat">
-        <Link to={stat.url}>
+        <div>
           <p className="user-info__stat-value">{stat.value}</p>
           <p className="user-info__stat-name">{stat.name}</p>
-        </Link>
+        </div>
       </li>
     );
   }
@@ -54,18 +54,15 @@ class User extends React.Component {
     const stats = [
       {
         name: "Public Repos",
-        value: user.public_repos || 0,
-        url: `/user/${this.props.params.username}/repos`
+        value: user.public_repos || 0
       },
       {
         name: "Followers",
-        value: user.followers || 0,
-        url: `/user/${this.props.params.username}/followers`
+        value: user.followers || 0
       },
       {
         name: "Following",
-        value: user.following || 0,
-        url: `/user/${this.props.params.username}/following`
+        value: user.following || 0
       },
       {
         name: "Company",
@@ -80,7 +77,7 @@ class User extends React.Component {
     return (
       <div className="user-page">
         <div className="user-info">
-          <Link className="user-info__text" to={`/user/${user.login}`}>
+          <div className="user-info__text" to={`/user/${user.login}`}>
             <img
               className="user-info__avatar"
               src={user.avatar_url}
@@ -92,7 +89,7 @@ class User extends React.Component {
               <br />
             </h2>
             <p className="user-info__bio">{user.bio}</p>
-          </Link>
+          </div>
 
           <ul className="user-info__stats">{stats.map(this.renderStat)}</ul>
         </div>
